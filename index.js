@@ -1,14 +1,16 @@
-{
-  "name": "my-app",
-  "version": "1.0.0",
-  "description": "A simple Node.js app",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "build": "echo 'Building the app...' && exit 0",
-    "test": "echo 'Running tests...' && exit 0"
-  },
-  "dependencies": {
-    "express": "^4.17.1"
-  }
-}
+const express = require('express');
+const app = express();
+const port = 3000; // This is the port your application will use
+
+// Serve static files from the "public" directory
+app.use(express.static('public'));
+
+// Define a route for the root URL
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
